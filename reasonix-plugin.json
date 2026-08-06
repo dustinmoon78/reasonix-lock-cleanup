@@ -1,0 +1,15 @@
+{
+  "name": "reasonix-lock-cleanup",
+  "version": "1.0.0",
+  "description": "Auto-clean orphan session lease locks on SessionStart, preventing false 'workspace occupied' errors when opening multiple projects",
+  "hooks": {
+    "SessionStart": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"cleanup-locks.ps1\"",
+        "shell": "auto",
+        "description": "Remove orphaned session lease locks (recovery leftovers)",
+        "timeout": 30000
+      }
+    ]
+  }
+}
